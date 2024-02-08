@@ -15,7 +15,8 @@ Map<String, List<Producto>> stock = {
     Producto(5, 10.50, DateTime(2023, 12, 15)),
   ],
   'productoC': [
-    Producto(6, 9.49, DateTime(2023, 11, 20)),
+    Producto(6, 9
+    .49, DateTime(2023, 11, 20)),
     Producto(3, 8.99, DateTime(2023, 9, 8)),
   ],
   // ... Otros productos ...

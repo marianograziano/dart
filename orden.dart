@@ -1,4 +1,4 @@
-// pedido_de_compra.dart
+// orden.dart
 import 'cliente.dart';
 
 enum EstadoPedido { pendiente, procesando, enviado, entregado }
