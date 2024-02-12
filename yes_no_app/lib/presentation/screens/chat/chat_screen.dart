@@ -20,7 +20,7 @@ class ChatScreen extends StatelessWidget {
                   'https://img.asmedia.epimg.net/resizer/0CkHNfxQQKngDFkW1zlEnfJ75p8=/644x362/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/KCS2YC7OE5OOTH4OVC4KFQS3NQ.jpg'),
             ),
           ),
-          title: const Text('Mi interlocuto r'),
+          title: const Text('Mi interlocutor'),
           centerTitle: true,
         ),
         body: _ChatView());
@@ -46,7 +46,7 @@ class _ChatView extends StatelessWidget {
                itemBuilder: (BuildContext context, int index) { 
                 final message = chatProvider.messageList[index];
                 return (message.fromWho == FromWho.hers) 
-                ? HerMessageBubble()
+                ? HerMessageBubble(message: message)
                 : MyMessageBubble(message: message);
                 // return (index % 2 == 0 )
                 // ? const HerMessageBubble()
