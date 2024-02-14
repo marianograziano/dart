@@ -1,46 +1,50 @@
 import 'package:flutter/material.dart';
 
 class MessageFieldBox extends StatelessWidget {
-  final ValueChanged<String> onValue; 
-  const MessageFieldBox({super.key, required this.onValue});
+  const MessageFieldBox({super.key});
 
   @override
   Widget build(BuildContext context) {
+    //final colors = Theme.of(context).colorScheme;
+
+    final FocusNode focusNode = FocusNode();
     final textController = TextEditingController();
-    final focusNode = FocusNode();
-    
-
     final OutlineInputBorder = UnderlineInputBorder(
-      borderSide: const BorderSide(color: Colors.transparent),
-      borderRadius: BorderRadius.circular(40));
-
+   
+      borderSide: const BorderSide(color: Color.fromARGB(116, 0, 0, 0)),
+      borderRadius: BorderRadius.circular(50)
+      );
       final inputDecoration = InputDecoration(
-        hintText: 'End your message with a "??"',
-          enabledBorder: OutlineInputBorder,
-          focusedBorder: OutlineInputBorder,
-          filled: true,
-          suffixIcon:
-              IconButton(onPressed: () {
-                final textValue = textController.value.text;
-                //print('Valor de la caja de texto = $textValue');
-                textController.clear();
-                onValue ( textValue );
-              }, icon: Icon(Icons.send_outlined)));
-    
+        hintText: 'Termina tu mensaje con un ?',
+        enabledBorder: OutlineInputBorder,
+        focusedBorder: OutlineInputBorder,//OutlineInputBorder(borderSide: BorderSide(color: colors.secondary), borderRadius: BorderRadius.circular(20)) ,
+        filled: true,
+        suffixIcon: IconButton(
+          icon: const Icon(Icons.send_outlined),
+           onPressed: () { 
+            final textValue = textController.value.text;
+            print('Button: ${textValue}');
+            textController.clear();
+            },)
+      
+    );
+   
     return TextFormField(
-      onTapOutside:(event) {
+      onTapOutside: (event) {
         focusNode.unfocus();
       },
+      
       focusNode: focusNode,
       controller: textController,
-      decoration: inputDecoration,
+      decoration:  inputDecoration,
       onFieldSubmitted: (value) {
-        //print('Submit Value $value');
-                        onValue ( value );
+        print('Valor submitted : $value');
         textController.clear();
         focusNode.requestFocus();
-      },
-      
+      }
+      // onChanged: (value) {
+      //   print('changed $value');
+      //},
     );
   }
 }
